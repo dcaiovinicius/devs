@@ -1,0 +1,14 @@
+services:
+  database:
+    container_name: postgres-database
+    image: postgres:17.7-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
