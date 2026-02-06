@@ -25,7 +25,8 @@ group :development, :test do
   gem "bundler-audit", require: false
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
-  gem 'dotenv-rails', require: 'dotenv/load'
+  gem "dotenv-rails", require: "dotenv/load"
+  gem "ffaker"
 end
 
 group :development do

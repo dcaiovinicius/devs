@@ -1,0 +1,10 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  available_on: <%= FFaker::Time.between(Date.today, Date.today + 180).to_date %>
+  hero: <%= FFaker::Lorem.paragraph %>
+  website: "<%= FFaker::Internet.http_url %>"
+  github: "https://github.com/test"
+  twitter: "https://twitter.com/test"
+  bio: <%= FFaker::Lorem.paragraph %>
