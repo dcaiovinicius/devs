@@ -1,3 +1,7 @@
 one:
   email: user@email.com
   encrypted_password: <%= Devise::Encryptor.digest(User, '123456') %>
+
+two:
+  email: user2@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, '123456') %>

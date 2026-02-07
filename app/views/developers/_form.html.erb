@@ -1,0 +1,92 @@
+<%= form_with model: @developer, local: true, class: "space-y-5", data: { controller: "preview" } do |f| %>
+
+  <% if @developer.errors.any? %>
+    <div class="bg-red-50 border-l-4 border-red-400 p-4 rounded-md">
+      <div class="flex">
+        <div class="shrink-0">
+          <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-red-700 font-medium">
+            Corrigir os erros abaixo:
+          </p>
+          <ul class="mt-1 text-sm text-red-700 list-disc list-inside">
+            <% @developer.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Foto / Avatar -->
+  <div class="flex flex-col items-center mb-2">
+    <div class="relative w-32 h-32 rounded-full overflow-hidden border-2 border-gray-200 bg-gray-50 mb-3">
+      <img id="preview"
+           src="<%= @developer.avatar.attached? ? url_for(@developer.avatar) : 'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80' %>"
+           alt="Preview"
+           class="w-full h-full object-cover" />
+    </div>
+
+    <label class="cursor-pointer bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium py-2 px-4 rounded-md border border-gray-300 transition">
+      Escolher foto
+      <%= f.file_field :avatar,
+                       accept: "image/*",
+                       class: "hidden",
+                       data: { action: "change->preview#update" } %>
+    </label>
+  </div>
+
+  <div>
+    <%= f.label :hero, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= f.text_field :hero,
+                     placeholder: "Ex: Full-stack Ruby dev | 5+ anos de experiência",
+                     class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3" %>
+  </div>
+
+  <div>
+    <%= f.label :bio, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= f.text_area :bio,
+                    rows: 5,
+                    placeholder: "Fale um pouco sobre você, tecnologias que domina, experiência...",
+                    class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3 resize-y" %>
+  </div>
+
+  <div>
+    <%= f.label :available_on, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= f.date_field :available_on,
+                     class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3" %>
+  </div>
+
+  <div>
+    <%= f.label :website, class: "block text-sm font-medium text-gray-700 mb-1" %>
+    <%= f.url_field :website,
+                    placeholder: "https://seusite.com",
+                    class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3" %>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <%= f.label :github, class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= f.url_field :github,
+                      placeholder: "https://github.com/seuuser",
+                      class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3" %>
+    </div>
+
+    <div>
+      <%= f.label :twitter, class: "block text-sm font-medium text-gray-700 mb-1" %>
+      <%= f.url_field :twitter,
+                      placeholder: "https://twitter.com/seuuser",
+                      class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-2.5 px-3" %>
+    </div>
+  </div>
+
+  <div class="pt-3">
+    <%= f.submit "Create Developer",
+                 class: "w-full bg-gray-600 hover:bg-gray-500 text-white font-semibold py-3 px-4 rounded-md transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" %>
+  </div>
+
+<% end %>
