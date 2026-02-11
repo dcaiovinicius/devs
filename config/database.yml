@@ -15,4 +15,6 @@ test:
   database: devs_test
 
 production:
+  adapter: postgresql
+  encoding: unicode
   url: <%= ENV["DATABASE_URL"] %>
