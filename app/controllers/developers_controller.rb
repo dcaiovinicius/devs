@@ -25,7 +25,7 @@ class DevelopersController < ApplicationController
     if @developer.update(developer_params)
       redirect_to @developer, notice: "Developer was successfully updated."
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -35,7 +35,7 @@ class DevelopersController < ApplicationController
     if @developer.save
       redirect_to @developer, notice: "Developer was successfully created."
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -48,7 +48,7 @@ class DevelopersController < ApplicationController
     @developer = Developer.find(params[:id])
 
     if @developer.user != current_user
-      redirect_to root_path, alert: "Not authorized", status: :unauthorized and return
+      redirect_to root_path, alert: "You are not authorized to edit this developer.", status: :unauthorized
     end
   end
 end
