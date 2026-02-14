@@ -15,5 +15,7 @@ Rails.application.routes.draw do
 
   resources :developers
 
+  get "/403", to: "errors#forbidden"
+
   root to: "developers#index"
 end

@@ -4,4 +4,15 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  include Pundit::Authorization
+
+  rescue_from Pundit::NotAuthorizedError do
+    flash.now[:alert] = "You are not authorized to perform this action."
+    render "errors/forbidden", status: :forbidden
+  end
+
+  rescue_from ActiveRecord::RecordNotFound do
+    render "errors/not_found", status: :not_found
+  end
 end

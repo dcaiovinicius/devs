@@ -53,7 +53,7 @@ class DevelopersTest < ActionDispatch::IntegrationTest
 
     patch developer_path(developer), params: { developer: developer_params }
 
-    assert_response :unauthorized
+    assert_response :forbidden
   end
 
   test "requires authentication to create a developer" do
@@ -62,6 +62,12 @@ class DevelopersTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to new_user_session_path
+  end
+
+  test "shows 404 for non-existent developer" do
+    sign_in users(:one)
+    get developer_path(id: 42)
+    assert_response :not_found
   end
 
   private

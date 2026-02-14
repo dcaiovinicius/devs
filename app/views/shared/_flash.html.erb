@@ -1,0 +1,21 @@
+<% flash.each do |type, message| %>
+  <% type = type.to_sym %>
+
+  <% case type %>
+    <% when :notice %>
+      <div class="px-4 py-3 rounded-md text-md font-medium bg-gray-400 text-green-800">
+        <%= message %>
+      </div>
+
+    <% when :alert %>
+      <div class="px-4 py-3 rounded-md text-md font-medium text-red-800">
+        <%= message %>
+      </div>
+
+    <% else %>
+      <div class="px-4 py-3 rounded-md text-md font-medium">
+        <%= message %>
+      </div>
+    <% end %>
+    
+<% end %>
