@@ -17,5 +17,5 @@ Rails.application.routes.draw do
 
   get "/403", to: "errors#forbidden"
 
-  root to: "developers#index"
+  root to: "page#index"
 end

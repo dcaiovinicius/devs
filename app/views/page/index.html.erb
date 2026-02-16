@@ -1,0 +1,21 @@
+<section class="max-w-5xl mx-auto">
+  <article class="flex flex-col items-center justify-center min-h-screen text-center gap-5">
+  <h1 class="text-4xl md:text-5xl font-extrabold text-gray-500 leading-tight">
+    The reverse job board for <br />
+    <span class="text-gray-900 font-extrabold">Rails developers</span>
+  </h1>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+  <button class="bg-gray-600 hover:bg-gray-500 py-4 px-8 rounded text-gray-100 ">Get started</button>
+  <article>
+</section>
+
+<section class="mx-auto">
+  <h2 class="text-xl font-semibold text-gray-900 mb-6">
+    Developers available now
+  </h2>
+
+  <ul class="space-y-6">
+    <%= render partial: "developers/developer", collection: @developers %>
+  </ul>
+</section>
