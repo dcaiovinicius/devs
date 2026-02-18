@@ -8,7 +8,16 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+
 # Use FFaker
+
+user = User.create!(
+  email:                 'admin@example.com',
+  password:              '12345678',
+  password_confirmation: '12345678',
+  admin:                 true
+)
+
 10.times do
   user = User.create!(
     email:                 FFaker::InternetSE.unique.email,
