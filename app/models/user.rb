@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :developer
+
+  scope :admins, -> { where(admin: true) }
 end
