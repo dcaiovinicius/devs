@@ -37,7 +37,11 @@
                 data-dropdown-target="menu"
                 class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-800 border border-gray-700 shadow-lg py-1"
               >
-                <%= link_to "Profile", developer_path(current_user), class: "block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" %>
+                <% if current_user.developer.present? %>
+                  <%= link_to "Edit Profile", edit_developer_path(current_user.developer) , class: "block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" %>
+                <% else %>
+                  <%= link_to "Create Profile", new_developer_path, class: "block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" %>
+                <% end %>
                 <%= link_to "Settings", edit_user_registration_path, class: "block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white" %>
                 <div class="border-t border-gray-700 my-1"></div>
                 <%= button_to "Sign Out", destroy_user_session_path, method: :delete,
@@ -83,7 +87,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </nav>
