@@ -29,3 +29,8 @@
 
 en:
   hello: "Hello world"
+  errors:
+    form:
+      fix_below:
+        one: "Fix the error below:"
+        other: "Fix the %{count} errors below:"

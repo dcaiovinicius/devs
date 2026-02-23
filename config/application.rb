@@ -23,5 +23,8 @@ module Demo
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Use routes for custom error pages (404, 422, 500)
+    config.exceptions_app = routes
   end
 end

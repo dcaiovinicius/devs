@@ -1,5 +1,5 @@
 class PageController < ApplicationController
   def index
-    @developers = Developer.all().limit(10)
+    @developers = Developer.order(created_at: :desc).limit(6)
   end
 end

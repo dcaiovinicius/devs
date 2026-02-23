@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
   rescue_from Pundit::NotAuthorizedError do
-    flash.now[:alert] = "You are not authorized to perform this action."
+    flash.now[:alert] = "Você não tem permissão para esta ação."
     render "errors/forbidden", status: :forbidden
   end
 

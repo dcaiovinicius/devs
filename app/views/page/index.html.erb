@@ -1,21 +1,101 @@
-<section class="max-w-5xl mx-auto mb-32 mt-32 px-4">
-  <article class="flex flex-col items-center justify-center text-center gap-5">
-  <h1 class="text-4xl md:text-5xl font-extrabold text-gray-500 leading-tight">
-    The reverse job board for <br />
-    <span class="text-gray-900 font-extrabold">Rails developers</span>
-  </h1>
+<section class="max-w-4xl mx-auto py-20 md:py-32 px-4">
+  <div class="text-center">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
+      Encontre desenvolvedores<br />
+      <span class="text-indigo-600">brasileiros</span>
+    </h1>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-  <button class="bg-gray-600 hover:bg-gray-500 py-4 px-8 rounded text-gray-100 ">Get started</button>
-  <article>
+    <p class="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+      O reverse job board para conectar empresas com os melhores talentos tech do Brasil.
+    </p>
+
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <%= link_to "Ver desenvolvedores", developers_path,
+          class: "inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg shadow-sm transition" %>
+      <% if user_signed_in? %>
+        <%= link_to (current_user.developer&.persisted? ? "Ver meu perfil" : "Criar perfil"),
+                    (current_user.developer&.persisted? ? developer_path(current_user.developer) : new_developer_path),
+                    class: "inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-semibold py-3 px-8 rounded-lg border border-gray-300 shadow-sm transition" %>
+      <% else %>
+        <%= link_to "Criar perfil", new_user_registration_path,
+            class: "inline-flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 font-semibold py-3 px-8 rounded-lg border border-gray-300 shadow-sm transition" %>
+      <% end %>
+    </div>
+  </div>
 </section>
 
-<section class="mx-auto">
-  <h2 class="text-xl font-semibold text-gray-900 mb-6">
-    Developers available now
-  </h2>
+<section class="py-12 border-y border-gray-200 bg-white">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-indigo-100 text-indigo-600 mb-4">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900">Encontre</h3>
+        <p class="mt-1 text-sm text-gray-600">Navegue perfis de devs disponíveis agora</p>
+      </div>
+      <div>
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-indigo-100 text-indigo-600 mb-4">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900">Conecte</h3>
+        <p class="mt-1 text-sm text-gray-600">Entre em contato direto pelos links do perfil</p>
+      </div>
+      <div>
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-indigo-100 text-indigo-600 mb-4">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900">Contrate</h3>
+        <p class="mt-1 text-sm text-gray-600">Feche com o talento ideal para seu time</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <ul class="space-y-6">
+<section class="max-w-5xl mx-auto py-16 px-4">
+  <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900">
+        Desenvolvedores disponíveis
+      </h2>
+      <p class="mt-1 text-gray-600">Perfis mais recentes no DevsBR</p>
+    </div>
+    <%= link_to "Ver todos", developers_path,
+        class: "text-indigo-600 hover:text-indigo-700 font-medium text-sm shrink-0" %>
+  </div>
+
+  <ul class="space-y-4">
     <%= render partial: "developers/developer", collection: @developers %>
   </ul>
+
+  <% if @developers.empty? %>
+    <div class="text-center py-16 rounded-lg border-2 border-dashed border-gray-200 bg-gray-50">
+      <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+      <p class="mt-4 text-gray-500">Nenhum perfil cadastrado ainda.</p>
+      <p class="mt-1 text-sm text-gray-400">Seja o primeiro a criar seu perfil!</p>
+      <%= link_to "Criar perfil", new_user_registration_path,
+          class: "mt-6 inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-lg transition" %>
+    </div>
+  <% end %>
+</section>
+
+<section class="max-w-4xl mx-auto py-16 px-4 text-center">
+  <div class="rounded-2xl bg-gray-900 px-8 py-12 md:px-16 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-white">
+      É desenvolvedor? Cadastre-se gratuitamente
+    </h2>
+    <p class="mt-4 text-gray-300 max-w-xl mx-auto">
+      Crie seu perfil e apareça para empresas que estão buscando talentos como você.
+    </p>
+    <%= link_to "Criar perfil grátis", new_user_registration_path,
+        class: "mt-8 inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-8 rounded-lg transition" %>
+  </div>
 </section>

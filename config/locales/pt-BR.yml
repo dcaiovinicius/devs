@@ -1,0 +1,6 @@
+pt-BR:
+  errors:
+    form:
+      fix_below:
+        one: "Corrija o erro abaixo:"
+        other: "Corrija os %{count} erros abaixo:"

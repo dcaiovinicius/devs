@@ -1,0 +1,16 @@
+<section class="min-h-[60vh] flex flex-col items-center justify-center px-4 py-16">
+  <div class="text-center max-w-md">
+    <p class="text-6xl font-bold text-gray-300 select-none">422</p>
+    <h1 class="mt-4 text-2xl font-bold text-gray-900">Requisição inválida</h1>
+    <p class="mt-2 text-gray-600">
+      A alteração que você tentou fazer foi rejeitada. Tente novamente.
+    </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+      <%= link_to "Voltar", :back,
+          class: "inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 transition" %>
+      <%= link_to "Ir para home", root_path,
+          class: "inline-flex items-center justify-center px-5 py-2.5 rounded-lg text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition" %>
+    </div>
+  </div>
+</section>
