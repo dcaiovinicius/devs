@@ -1,1 +1,61 @@
-@import "tailwindcss";
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+@import 'tailwindcss';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+.pagy {
+  @apply flex items-center justify-center gap-1 my-8 text-sm;
+}
+
+.pagy a,
+.pagy span.current,
+.pagy span.gap {
+  @apply flex h-9 min-w-9 items-center justify-center rounded-md border border-gray-300 font-medium;
+}
+
+.pagy a {
+  @apply bg-white text-gray-700 hover:bg-gray-100 hover:text-gray-900;
+}
+
+.pagy a[aria-disabled="true"],
+.pagy span.gap {
+  @apply text-gray-400 bg-gray-50 cursor-default;
+}
+
+.pagy span.current {
+  @apply bg-indigo-600 text-white border-indigo-600 font-semibold z-10;
+}
+
+/* Opcional: efeito dark mode */
+.dark .pagy a {
+  @apply bg-gray-800 border-gray-600 text-gray-300 hover:bg-gray-700;
+}
+
+.dark .pagy span.current {
+  @apply bg-indigo-500 border-indigo-500 text-white;
+}

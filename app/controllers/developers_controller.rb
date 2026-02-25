@@ -4,7 +4,13 @@ class DevelopersController < ApplicationController
   before_action :redirect_if_has_profile, only: %i[new create]
 
   def index
-    @developers = Developer.order(created_at: :desc)
+    @query = params[:q]
+
+    scope = Developer.order(created_at: :desc)
+
+    scope = scope.search_by_text(@query) if @query.present?
+
+    @pagy, @developers = pagy(scope, items: 6)
   end
 
   def show

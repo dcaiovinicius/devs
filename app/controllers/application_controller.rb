@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   include Pundit::Authorization
 
+  include Pagy::Method
+
   rescue_from Pundit::NotAuthorizedError do
     flash.now[:alert] = "Você não tem permissão para esta ação."
     render "errors/forbidden", status: :forbidden
