@@ -38,3 +38,6 @@ end
 gem "tailwindcss-rails", "~> 4.4"
 
 gem "pundit", "~> 2.5"
+
+gem "pg_search"
+gem "pagy"
