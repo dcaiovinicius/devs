@@ -24,6 +24,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
   gem "dotenv-rails", require: "dotenv/load"
   gem "ffaker"
+  gem "mailcatcher"
 end
 
 group :development do
@@ -41,3 +42,5 @@ gem "pundit", "~> 2.5"
 
 gem "pg_search"
 gem "pagy"
+
+gem "sidekiq", "~> 8.1"

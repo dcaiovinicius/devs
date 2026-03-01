@@ -1,7 +1,7 @@
 services:
   database:
     container_name: postgres-database
-    image: postgres:17.7-alpine
+    image: postgres:17-alpine
     restart: unless-stopped
     env_file:
       - .env
@@ -10,5 +10,15 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
+  redis:
+    container_name: redis-cache
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
 volumes:
   pgdata:
+  redisdata:

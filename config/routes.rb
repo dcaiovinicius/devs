@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   match "/500", to: "errors#internal_server_error", via: :all
 
   root to: "page#index"
+
+
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end
